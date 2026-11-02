@@ -1,1 +1,214 @@
-Hei
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Historia om Gudbrandsdalen</title>
+<meta name="description" content="Bygd for bygd, gard for gard: stedsnavn, gamle kart og glemte historier fra Gudbrandsdalen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: kartblad — smal lesespalte med marginalnoter, Lågen som en blå linje gjennom toppen */
+:root{
+  --paper:#EDEFEA; --paper-2:#E2E6DF; --ink:#18232C; --ink-soft:#4A5862;
+  --river:#2D5F80; --rule:#C6CDC5;
+  --f-display:"Gloock", Georgia, "Times New Roman", serif;
+  --f-body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12191F; --paper-2:#1A232B; --ink:#E4E8E2; --ink-soft:#A3AFB6;
+  --river:#7DB2D4; --rule:#2C3842; color-scheme:dark}}
+
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:var(--river);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--river);outline-offset:3px}
+
+.top{border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-block:18px}
+.brand{font-family:var(--f-display);font-size:1.3rem;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none}
+nav a:hover{color:var(--river)}
+
+.hero .wrap{padding-block:56px 40px;display:grid;gap:28px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--river);margin:0}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;margin:0;text-wrap:balance;max-width:14ch}
+.hero p.lede{font-size:1.2rem;max-width:40ch;margin:0;color:var(--ink-soft)}
+.river{display:block;width:100%;height:70px;margin-top:8px}
+.river path{fill:none;stroke:var(--river);stroke-width:2.5}
+.river .bank{stroke:var(--rule);stroke-width:1}
+.river text{fill:var(--ink-soft);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em}
+
+.sec .wrap{padding-block:48px;border-top:1px solid var(--rule)}
+.sec h2{font-family:var(--f-display);font-weight:400;font-size:2rem;line-height:1.1;margin:0 0 24px;text-wrap:balance}
+
+/* kart-kort */
+.mapcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:center;background:var(--paper-2);border-radius:6px;padding:24px 26px}
+.mapcard p{margin:0;max-width:52ch}
+.mapcard .count{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:6px}
+.cta{display:inline-block;background:var(--river);color:var(--paper);font-family:var(--f-mono);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:4px;white-space:nowrap}
+.cta:hover{filter:brightness(1.1)}
+
+.article{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px;align-items:start}
+.article .body{min-width:0;max-width:65ch}
+.article h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.1;margin:0 0 6px;text-wrap:balance}
+.byline{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;color:var(--ink-soft);margin:0 0 28px}
+.body h4{font-family:var(--f-body);font-weight:600;font-size:1.1rem;margin:32px 0 8px}
+.body p{margin:0 0 16px}
+.body .callout{border-left:3px solid var(--river);padding:4px 0 4px 18px;margin:28px 0;font-style:italic;color:var(--ink-soft)}
+.body .ask{background:var(--paper-2);padding:18px 20px;border-radius:4px;margin-top:28px}
+.notes{display:grid;gap:22px;font-size:.9rem;line-height:1.5;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:14px}
+.notes b{display:block;font-family:var(--f-mono);font-weight:500;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--river);margin-bottom:4px}
+.notes .code{font-family:var(--f-mono);font-size:.85rem;color:var(--ink)}
+
+.coming{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 32px}
+.coming li{border-top:1px solid var(--rule);padding:14px 0;display:flex;justify-content:space-between;gap:12px}
+.coming span{font-family:var(--f-mono);font-size:.75rem;color:var(--ink-soft);white-space:nowrap;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.person h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;margin:0 0 2px}
+.person .role{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--river);margin:0 0 10px}
+.person p{margin:0;max-width:46ch}
+
+footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:760px){
+  .article{grid-template-columns:minmax(0,1fr)}
+  .notes{order:-1}
+  .mapcard{grid-template-columns:minmax(0,1fr)}
+  body{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">Historia om Gudbrandsdalen</a>
+    <nav aria-label="Hovedmeny">
+      <a href="/kart/">Historiekart</a>
+      <a href="#artikler">Artikler</a>
+      <a href="#kommer">Kommer snart</a>
+      <a href="#om">Om oss</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Folkeopplysning fra dalen</p>
+      <h1>Bygd for bygd, gard for gard</h1>
+      <p class="lede">Vi graver i stedsnavn, gamle kart og glemte historier fra Gudbrandsdalen, og skriver det ned så alle kan lese det.</p>
+      <svg class="river" viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bank" d="M0 48 C 160 30, 260 62, 420 44 S 700 22, 860 40 S 960 52, 1000 46"/>
+        <path d="M0 40 C 160 22, 260 54, 420 36 S 700 14, 860 32 S 960 44, 1000 38"/>
+        <text x="8" y="66">LÅGEN</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="sec" id="kart">
+    <div class="wrap">
+      <h2>Historiekartet</h2>
+      <div class="mapcard">
+        <div>
+          <p>Alle historiene våre, plassert på gårdene og stedene de handler om. Klikk på en gård i kartet for å lese.</p>
+          <p class="count" id="kartTeller"></p>
+        </div>
+        <a class="cta" href="/kart/">Åpne kartet →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="artikler">
+    <div class="wrap">
+      <h2>Nyeste artikkel</h2>
+      <div class="article">
+        <article class="body">
+          <h3>Kjønnås – ei bygd i Ringebu</h3>
+          <p class="byline">RINGEBU · OKTOBER 2026 · <a href="/kart/#ggewcr9w79">Se i kartet</a></p>
+
+          <p>Visste du at Tine-meieriet, Krokkasser og hele industriområdet på Frya ligger på Kjønnås? Det gjør også de fire øyene i Lågen.</p>
+          <p>For oss frønningom (folk fra Frya) har «oppå Kjønnås» alltid vært en litt udefinert plass, sånn cirka 500 meter rundt gamle Kjønnås skole. Verden er liten. Derfor har det vært utrolig moro å sette seg ned og lese seg opp på bygda og historien.</p>
+
+          <h4>Ei større bygd enn du tror</h4>
+          <p>Kjønnås er ei relativt stor bygd. Grovt sagt starter grensa ved Våla inne i Stulen og går ned til vestsida av Kolflata. Derfra tar den med seg Randsted og fortsetter ned til Lågen, helt på tuppen av Risøya.</p>
+          <p>Så følger grensa sørvestsida av Lågen opp til munningen av Frya, og videre innover Fryaelva til Dalen og Rudi. Der fyker den opp fjellsida, går vest for Bølknappen og innover til Søre-Åbårsjøen.</p>
+
+          <h4>Hvor kommer navnet fra?</h4>
+          <p>Det finnes to forklaringer.</p>
+          <p>Den mest kjente er at Kjønnås egentlig er <i>Tjønnås</i>, åsen med tjernene. Før lå det flere små tjern her. Overgangen fra Tj til Kj finner vi flere steder i landet, og en vanlig forklaring er at gamle kartmakere skrev ned navnet slik de hørte det.</p>
+          <p>Den andre forklaringen er Oluf Ryghs, fra standardverket <i>Norske Gaardnavne</i>. Han mener at Kjønnås stammer fra det norrøne <i>Klyf-nás</i>. Første ledd, <i>klyf</i> eller <i>klauf</i>, betyr kløft, spalte eller en markant fordypning i terrenget. Siste ledd, <i>-nás</i>, er i slekt med <i>nos</i> (nese), som i stedsnavn brukes om en fremstikkende fjellknatt eller en bratt bergrygg. Med tiden har f-lyden slipt seg bort, og navnet ble til Kjønås/Kjønnås. Altså «bergknatten med kløften i».</p>
+
+          <h4>Tjernene som forsvant</h4>
+          <p class="callout">Denne delen kommer snart: hvor tjernene lå, og hvorfor de ble drenert.</p>
+
+          <h4>Fra nå av: PÅ Kjønnås</h4>
+          <p>Så hvis du også er en av dem som sier «oppå Kjønnås», kan du tenke på at både øyene i Lågen, meieriet og hele industriområdet på Frya ligger der. Fra nå av kan du rett og slett si <i>på</i> Kjønnås.</p>
+
+          <p class="ask">Hvilken navneforklaring heier du på – Tjønnås eller Ryghs kløftberg? Og vet du noe mer om tjernene? Si fra til oss på Facebook-sida.</p>
+        </article>
+
+        <aside class="notes" aria-label="Fakta">
+          <div><b>Kommune</b>Ringebu, Innlandet</div>
+          <div><b>Gammel skrivemåte</b><span class="code">Kjønaas</span><br>Eget telleområde i folketellinga 1875.</div>
+          <div><b>To navneforklaringer</b><span class="code">Tjønnås</span> åsen med tjernene<br><span class="code">Klyf-nás</span> bergknatten med kløften i (Rygh)</div>
+          <div><b>Grensepunkter</b>Våla · Stulen · Kolflata · Randsted · Risøya · Frya · Dalen · Rudi · Bølknappen · Søre-Åbårsjøen</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kommer">
+    <div class="wrap">
+      <h2>Kommer snart</h2>
+      <ul class="coming">
+        <li>Tjernene på Kjønnås som ble drenert <span>Ringebu</span></li>
+        <li>Flere bygder og gardsnavn fra dalen <span>Gudbrandsdalen</span></li>
+        <li>Spørsmål fra leserne, svar fra Arild <span>Fast spalte</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="om">
+    <div class="wrap">
+      <h2>Om oss</h2>
+      <div class="people">
+        <div class="person">
+          <h3>Arild</h3>
+          <p class="role">Historikeren</p>
+          <p>Kjenner kildene, bøkene og gardene. Det er Arild som vet svarene, og som finner fram i Rygh når navnene skal forklares.</p>
+        </div>
+        <div class="person">
+          <h3>Eirik</h3>
+          <p class="role">Den som spør</p>
+          <p>Stiller spørsmålene folk flest lurer på, og sørger for at historiene kommer ut på Facebook og YouTube.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Historia om Gudbrandsdalen</span>
+    <span>Finn oss på Facebook: søk «Historia om Gudbrandsdalen»</span>
+  </div>
+</footer>
+
+<script src="/kart/data.js"></script>
+<script>
+(function(){
+  var d = window.HK_DATA, el = document.getElementById("kartTeller");
+  if (!d || !el) return;
+  var g = d.farms.length, h = d.farms.reduce(function(a, f){ return a + f.stories.length; }, 0);
+  el.textContent = g + (g === 1 ? " gård" : " gårder") + " · " + h + (h === 1 ? " historie" : " historier");
+})();
+</script>
+</body>
+</html>
