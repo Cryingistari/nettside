@@ -20,8 +20,8 @@ window.HK_DATA = {
     {
       "id": "ggewcr9w79",
       "name": "Kjønnås",
-      "lat": 61.5452,
-      "lon": 10.09438,
+      "lat": 61.54437,
+      "lon": 10.10025,
       "kommune": "Ringebu",
       "stories": [
         {
