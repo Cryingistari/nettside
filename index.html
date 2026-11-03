@@ -45,6 +45,21 @@ nav a:hover{color:var(--river)}
 .photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--paper-2)}
 .photo figcaption,.slide figcaption{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:10px}
 
+/* youtube + facebook */
+.follow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;align-items:start}
+.follow h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;margin:0 0 4px}
+.follow .kicker{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--river);margin:0 0 14px}
+.follow p{margin:0 0 16px;max-width:52ch}
+.video{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--paper-2);margin-bottom:16px}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vtitle{font-weight:600;margin:0 0 4px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.cta.ghost{background:transparent;color:var(--river);border:1px solid var(--river)}
+.fbbox{background:var(--paper-2);border-radius:6px;overflow:hidden;width:100%;max-width:500px;min-height:200px}
+.fbbox iframe{display:block;width:100%;height:620px;border:0;background:#fff}
+.fbbox .fallback{padding:22px}
+@media (max-width:860px){.follow{grid-template-columns:minmax(0,1fr)}.fbbox iframe{height:560px}}
+
 /* bildekarusell */
 .carousel{position:relative}
 .track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
@@ -115,6 +130,7 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
     <nav aria-label="Hovedmeny">
       <a href="/kart/">Historiekart</a>
       <a href="#artikler">Artikler</a>
+      <a href="#folg">Video og Facebook</a>
       <a href="#kommer">Kommer snart</a>
       <a href="#om">Om oss</a>
     </nav>
@@ -232,6 +248,36 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
     </div>
   </section>
 
+  <section class="sec" id="folg">
+    <div class="wrap">
+      <h2>Se og følg oss</h2>
+      <div class="follow">
+        <div>
+          <h3>YouTube</h3>
+          <p class="kicker">Nyeste video</p>
+          <div class="video">
+            <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUNJRFHknJNSjzx0trzHswBQ" title="Nyeste video fra Historia om Gudbrandsdalen på YouTube" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <p>På YouTube blir historiene til film. Arild forteller, Eirik spør, og vi tar dere med ut til gardene og stedene det handler om, som da vi så på hvordan postvesenet fungerte i dalen for 200 år siden.</p>
+          <div class="btns">
+            <a class="cta" href="https://www.youtube.com/@historiaomgudbrandsdalen?sub_confirmation=1" target="_blank" rel="noopener">Abonner på kanalen</a>
+            <a class="cta ghost" href="https://www.youtube.com/@historiaomgudbrandsdalen/videos" target="_blank" rel="noopener">Alle videoene</a>
+          </div>
+        </div>
+        <div>
+          <h3>Facebook</h3>
+          <p class="kicker">Siste innlegg</p>
+          <div class="fbbox" id="fbbox">
+            <div class="fallback">
+              <p>Her legger vi ut de små historiene først. Følg sida for å få dem rett i feeden.</p>
+              <a class="cta" id="fblink" href="https://www.facebook.com/search/top?q=Historia%20om%20Gudbrandsdalen" target="_blank" rel="noopener">Finn oss på Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="kommer">
     <div class="wrap">
       <h2>Kommer snart</h2>
@@ -265,7 +311,7 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
 <footer>
   <div class="wrap">
     <span>Historia om Gudbrandsdalen</span>
-    <span>Finn oss på Facebook: søk «Historia om Gudbrandsdalen»</span>
+    <span><a href="https://www.youtube.com/@historiaomgudbrandsdalen" target="_blank" rel="noopener">YouTube</a> · <a id="fbfoot" href="https://www.facebook.com/search/top?q=Historia%20om%20Gudbrandsdalen" target="_blank" rel="noopener">Facebook</a></span>
   </div>
 </footer>
 
@@ -294,6 +340,21 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
   t.addEventListener("keydown", function(e){ if (e.key === "ArrowLeft"){ e.preventDefault(); go(cur() - 1); } if (e.key === "ArrowRight"){ e.preventDefault(); go(cur() + 1); } });
   t.addEventListener("scroll", function(){ window.requestAnimationFrame(update); }, { passive: true });
   window.addEventListener("resize", update); update();
+})();
+</script>
+<script>
+/* Facebook-sida. Sett adressen her, så vises siste innlegg i boksen. */
+(function(){
+  var FB_URL = "";
+  if (!FB_URL) return;
+  var box = document.getElementById("fbbox"), link = document.getElementById("fblink"), foot = document.getElementById("fbfoot");
+  link.href = FB_URL; link.textContent = "Følg oss på Facebook"; foot.href = FB_URL;
+  var w = Math.max(180, Math.min(500, Math.floor(box.clientWidth)));
+  var f = document.createElement("iframe");
+  f.title = "Siste innlegg fra Historia om Gudbrandsdalen på Facebook";
+  f.loading = "lazy"; f.allow = "encrypted-media";
+  f.src = "https://www.facebook.com/plugins/page.php?href=" + encodeURIComponent(FB_URL) + "&tabs=timeline&width=" + w + "&height=620&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&locale=nb_NO";
+  box.insertBefore(f, box.firstChild);
 })();
 </script>
 </body>
