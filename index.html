@@ -38,6 +38,27 @@ nav a:hover{color:var(--river)}
 .eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--river);margin:0}
 .hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;margin:0;text-wrap:balance;max-width:14ch}
 .hero p.lede{font-size:1.2rem;max-width:40ch;margin:0;color:var(--ink-soft)}
+.hero .wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;column-gap:48px}
+.hero .text{display:grid;gap:28px;min-width:0}
+.hero .river{grid-column:1/-1}
+.photo{margin:0}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--paper-2)}
+.photo figcaption,.slide figcaption{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:10px}
+
+/* bildekarusell */
+.carousel{position:relative}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 auto;margin:0;scroll-snap-align:start;max-width:100%}
+.slide img{display:block;height:clamp(340px,62vh,560px);width:auto;max-width:calc(100vw - 32px);object-fit:cover;border-radius:6px;background:var(--paper-2)}
+.car-nav{display:flex;align-items:center;gap:10px;margin-top:18px}
+.car-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
+.car-nav button:hover:not(:disabled){border-color:var(--river);color:var(--river)}
+.car-nav button:disabled{opacity:.35;cursor:default}
+.car-nav button:focus-visible{outline:2px solid var(--river);outline-offset:2px}
+.dots{display:flex;gap:8px;margin-left:8px}
+.dots span{width:8px;height:8px;border-radius:50%;background:var(--rule);transition:background .2s}
+.dots span.on{background:var(--river)}
 .river{display:block;width:100%;height:70px;margin-top:8px}
 .river path{fill:none;stroke:var(--river);stroke-width:2.5}
 .river .bank{stroke:var(--rule);stroke-width:1}
@@ -80,6 +101,8 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
   .article{grid-template-columns:minmax(0,1fr)}
   .notes{order:-1}
   .mapcard{grid-template-columns:minmax(0,1fr)}
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .photo img{aspect-ratio:4/4.4}
   body{font-size:17px}
 }
 </style>
@@ -101,9 +124,18 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Folkeopplysning fra dalen</p>
-      <h1>Bygd for bygd, gard for gard</h1>
-      <p class="lede">Vi graver i stedsnavn, gamle kart og glemte historier fra Gudbrandsdalen, og skriver det ned så alle kan lese det.</p>
+      <div class="text">
+        <p class="eyebrow">Folkeopplysning fra dalen</p>
+        <h1>Bygd for bygd, gard for gard</h1>
+        <p class="lede">Vi graver i stedsnavn, gamle kart og glemte historier fra Gudbrandsdalen, og skriver det ned så alle kan lese det.</p>
+      </div>
+      <figure class="photo">
+        <picture>
+          <source srcset="/bilder/arild-og-eirik-kafe.webp" type="image/webp">
+          <img src="/bilder/arild-og-eirik-kafe.jpg" width="960" height="1200" alt="Arild og Eirik ved et kafébord med kaffekopper og en PC som viser Facebook-sida Historia om Gudbrandsdalen" fetchpriority="high">
+        </picture>
+        <figcaption>Arild (t.v.) og Eirik planlegger neste historie</figcaption>
+      </figure>
       <svg class="river" viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true">
         <path class="bank" d="M0 48 C 160 30, 260 62, 420 44 S 700 22, 860 40 S 960 52, 1000 46"/>
         <path d="M0 40 C 160 22, 260 54, 420 36 S 700 14, 860 32 S 960 44, 1000 38"/>
@@ -164,6 +196,42 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
     </div>
   </section>
 
+  <section class="sec" id="bilder">
+    <div class="wrap">
+      <h2>Ute i dalen</h2>
+      <div class="carousel" aria-roledescription="karusell" aria-label="Bilder fra turene våre">
+        <div class="track" id="track" tabindex="0">
+        <figure class="slide">
+          <picture>
+            <source srcset="/bilder/arild-og-eirik-utsikt.webp" type="image/webp">
+            <img src="/bilder/arild-og-eirik-utsikt.jpg" width="787" height="1400" alt="Arild og Eirik står i høstgress med utsikt over dalen og gårdene i bakgrunnen" loading="lazy">
+          </picture>
+          <figcaption>Arild og Eirik på tur</figcaption>
+        </figure>
+        <figure class="slide">
+          <picture>
+            <source srcset="/bilder/arild-postkart.webp" type="image/webp">
+            <img src="/bilder/arild-postkart.jpg" width="788" height="1400" alt="Arild holder opp en kopi av et gammelt postkart med dalen i bakgrunnen" loading="lazy">
+          </picture>
+          <figcaption>Arild leser gamle postkart</figcaption>
+        </figure>
+        <figure class="slide">
+          <picture>
+            <source srcset="/bilder/arild-ved-steinen.webp" type="image/webp">
+            <img src="/bilder/arild-ved-steinen.jpg" width="1800" height="1013" alt="Arild står ved en lavdekket stein i høstgress, med Lågen og lia på andre sida av dalen bak" loading="lazy">
+          </picture>
+          <figcaption>Arild ved steinen, med Lågen nedenfor</figcaption>
+        </figure>
+        </div>
+        <div class="car-nav">
+          <button type="button" id="prev" aria-label="Forrige bilde">←</button>
+          <button type="button" id="next" aria-label="Neste bilde">→</button>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="kommer">
     <div class="wrap">
       <h2>Kommer snart</h2>
@@ -208,6 +276,24 @@ footer .wrap{padding-block:32px;border-top:1px solid var(--rule);font-size:.9rem
   if (!d || !el) return;
   var g = d.farms.length, h = d.farms.reduce(function(a, f){ return a + f.stories.length; }, 0);
   el.textContent = g + (g === 1 ? " gård" : " gårder") + " · " + h + (h === 1 ? " historie" : " historier");
+})();
+</script>
+<script>
+(function(){
+  var t = document.getElementById("track"); if (!t) return;
+  var slides = t.querySelectorAll(".slide"), prev = document.getElementById("prev"), next = document.getElementById("next"), dots = document.getElementById("dots");
+  slides.forEach(function(){ dots.appendChild(document.createElement("span")); });
+  function cur(){ var x = t.scrollLeft, best = 0, d = Infinity;
+    slides.forEach(function(s, i){ var dd = Math.abs(s.offsetLeft - t.offsetLeft - x); if (dd < d){ d = dd; best = i; } }); return best; }
+  function update(){ var i = cur(), end = t.scrollLeft + t.clientWidth >= t.scrollWidth - 4;
+    prev.disabled = t.scrollLeft <= 4; next.disabled = end;
+    Array.prototype.forEach.call(dots.children, function(el, j){ el.classList.toggle("on", end ? j === slides.length - 1 : j === i); }); }
+  function go(i){ i = Math.max(0, Math.min(slides.length - 1, i)); t.scrollTo({ left: slides[i].offsetLeft - t.offsetLeft }); }
+  prev.addEventListener("click", function(){ go(cur() - 1); });
+  next.addEventListener("click", function(){ go(cur() + 1); });
+  t.addEventListener("keydown", function(e){ if (e.key === "ArrowLeft"){ e.preventDefault(); go(cur() - 1); } if (e.key === "ArrowRight"){ e.preventDefault(); go(cur() + 1); } });
+  t.addEventListener("scroll", function(){ window.requestAnimationFrame(update); }, { passive: true });
+  window.addEventListener("resize", update); update();
 })();
 </script>
 </body>
