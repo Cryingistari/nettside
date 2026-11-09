@@ -392,6 +392,11 @@ function viewFarm(){
       var c = state.confirm && state.confirm.storyId === s.id;
       wrap.append(h("article", { class: "story" },
         h("h3", { text: s.title }),
+        s.images && s.images.length ? h("div", { class: "pics" }, s.images.map(function(im, i){
+          return h("button", { class: "pic", type: "button", "aria-label": "Vis bildet større: " + (im.alt || s.title), onclick: function(){ openPhoto(s, i); } },
+            h("img", { src: "/historier/bilder/" + im.src, alt: im.alt || "", loading: "lazy" }));
+        })) : null,
+        s.images && s.images.length && s.imageCredit ? h("span", { class: "when", text: s.imageCredit }) : null,
         s.summary ? h("p", { text: s.summary }) : null,
         h("div", { class: "row" },
           s.pdf ? h("button", { class: "btn primary small", type: "button", onclick: function(){ openReader(f, s); }, text: "Les historien" })
@@ -564,6 +569,33 @@ async function openReader(f, s){
       await page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
     }
   } catch(e){ if (job === readerJob) status.textContent = "PDF-filen kunne ikke vises. Prøv å lagre den på nytt fra Word som PDF."; }
+}
+
+/* ---------- photo viewer ---------- */
+var photoEl = null;
+function closePhoto(){ if (!photoEl) return; photoEl.remove(); photoEl = null; document.removeEventListener("keydown", photoKey); }
+function photoKey(e){
+  if (e.key === "Escape") closePhoto();
+  else if (e.key === "ArrowRight" && photoEl) photoEl._go(1);
+  else if (e.key === "ArrowLeft" && photoEl) photoEl._go(-1);
+}
+function openPhoto(s, i){
+  closePhoto();
+  var img = h("img", { alt: "" }), cap = h("p", { class: "photo-cap" });
+  var many = s.images.length > 1;
+  function show(){ var im = s.images[i]; img.src = "/historier/bilder/" + im.src; img.alt = im.alt || ""; cap.textContent = (im.caption || im.alt || "") + (many ? "  ·  " + (i + 1) + " av " + s.images.length : ""); }
+  photoEl = h("div", { class: "reader photo", role: "dialog", "aria-modal": "true", "aria-label": s.title, onclick: function(e){ if (e.target === photoEl) closePhoto(); } },
+    h("div", { class: "photo-box" },
+      h("div", { class: "row photo-bar" },
+        many ? h("button", { class: "btn small", type: "button", onclick: function(){ photoEl._go(-1); }, text: "‹ Forrige" }) : null,
+        many ? h("button", { class: "btn small", type: "button", onclick: function(){ photoEl._go(1); }, text: "Neste ›" }) : null,
+        h("span", { class: "spacer" }),
+        h("button", { class: "btn small", type: "button", onclick: closePhoto, text: "Lukk" })),
+      img, cap));
+  photoEl._go = function(d){ i = (i + d + s.images.length) % s.images.length; show(); };
+  show();
+  document.getElementById("root").append(photoEl);
+  document.addEventListener("keydown", photoKey);
 }
 
 /* ---------- banner (placing + unsaved changes) ---------- */
