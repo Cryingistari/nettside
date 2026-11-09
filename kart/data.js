@@ -38,22 +38,6 @@ window.HK_DATA = {
       ]
     },
     {
-      "id": "g69k0p47m0",
-      "name": "Dale Gudbrands gård",
-      "lat": 61.54978,
-      "lon": 9.96529,
-      "kommune": "Sør-Fron",
-      "stories": [
-        {
-          "id": "h5g0hxein5",
-          "title": "Olav den Hellige møter Dale Gudbrand",
-          "summary": "Dale Gudbrand er 1000 års stedet i Norge, med rette. Her møtte Olav den Hellige Dale Gudbrand til kamp i år 1000. Dette er godt dokumentert i Snorre.",
-          "pdf": null,
-          "added": "2026-11-01"
-        }
-      ]
-    },
-    {
       "id": "gtofte1789",
       "name": "Tofte",
       "lat": 61.5204,
