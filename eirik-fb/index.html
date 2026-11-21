@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eirik Bjørkli – ved, maskiner og livet på tomta</title>
+<meta name="description" content="YouTube-kanalen @eirik_fb: vedproduksjon, minigraver, båndsagbruk og gamle traktorer fra tomta i Gudbrandsdalen. Ærlige tester og praktiske guider.">
+<meta property="og:title" content="Eirik Bjørkli – @eirik_fb">
+<meta property="og:description" content="Vedproduksjon, maskintester og praktiske guider fra tomta.">
+<meta property="og:image" content="https://i.ytimg.com/vi/TPfd3UU6KBk/maxresdefault.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e8;--ink:#1f1a14;--muted:#6b6155;--wood:#8a4b1f;--wood2:#b8692c;--moss:#3f5a3a;--card:#fffdf8;--line:#e4dccd}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:10;background:rgba(246,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Bitter,serif;font-weight:800;text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:50%}
+nav a{margin-left:18px;text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--wood)}
+@media(max-width:700px){nav a.hide-m{display:none}}
+.hero{position:relative;color:#fff;background:#2a2118 url("https://i.ytimg.com/vi/GKm-9J8FS3E/maxresdefault.jpg") center/cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,14,8,.88) 0%,rgba(20,14,8,.55) 60%,rgba(20,14,8,.25))}
+.hero .wrap{position:relative;padding:90px 20px 80px}
+.hero h1{font-family:Bitter,serif;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;margin:0 0 16px;max-width:15ch}
+.hero p{font-size:1.15rem;max-width:52ch;margin:0 0 28px;color:#f1e7d8}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;margin:0 10px 10px 0}
+.btn.red{background:#d62a1e;color:#fff}.btn.red:hover{background:#b8231a}
+.btn.ghost{border:2px solid rgba(255,255,255,.7);color:#fff}.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:34px}
+.stats b{display:block;font-family:Bitter,serif;font-size:1.8rem}
+.stats span{color:#d9cbb6;font-size:.9rem}
+section{padding:64px 0}
+h2{font-family:Bitter,serif;font-size:1.9rem;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.vid{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .15s,box-shadow .15s;display:block}
+.vid:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(60,40,20,.12)}
+.thumb{position:relative;aspect-ratio:16/9;background:#ddd}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.dur{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.8);color:#fff;font-size:.78rem;padding:2px 6px;border-radius:4px}
+.vid .t{padding:12px 14px 4px;font-weight:600}
+.vid .m{padding:0 14px 14px;color:var(--muted);font-size:.88rem}
+.alt{background:#efe6d7}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+.about img{width:100%;border-radius:16px;aspect-ratio:16/10;object-fit:cover}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tags span{background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:.9rem}
+.gear{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gear div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.gear h3{margin:0 0 4px;font-size:1rem;color:var(--wood)}
+.gear p{margin:0;font-size:.95rem}
+.member{background:var(--moss);color:#fff;border-radius:20px;padding:44px;display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.member h2{color:#fff}.member p{color:#dfe8dc;max-width:56ch;margin:0}
+.member .btn{background:#fff;color:var(--moss)}
+footer{padding:40px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#"><img src="https://yt3.ggpht.com/l0QXyZxoOrJybfaNXVtyAk12FQiDg1sPmJZuwbyU00okCXIUAB5VfNoWS526lMjUFLMTi1Rt=s88-c-k-c0x00ffffff-no-rj" alt="">Eirik Bjørkli</a>
+  <nav><a href="#nyeste">Filmer</a><a class="hide-m" href="#guider">Guider</a><a class="hide-m" href="#utstyr">Utstyr</a><a href="#medlem">Bli medlem</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Ved, maskiner og livet på tomta</h1>
+  <p>Jeg lager ved, graver, sager materialer og skrur på gamle traktorer – og tar deg med på alt sammen. Ærlige tester, praktiske guider og det som går galt underveis.</p>
+  <a class="btn red" href="https://www.youtube.com/@eirik_fb?sub_confirmation=1" target="_blank" rel="noopener">▶ Abonner på YouTube</a>
+  <a class="btn ghost" href="#nyeste">Se de nyeste filmene</a>
+  <div class="stats">
+    <div><b>2 600+</b><span>abonnenter</span></div>
+    <div><b>840 000+</b><span>visninger</span></div>
+    <div><b>250+</b><span>filmer</span></div>
+  </div>
+</div></div>
+
+<section id="nyeste"><div class="wrap">
+  <h2>Nyeste filmer</h2>
+  <p class="lead">Ny film fra tomta omtrent hver uke.</p>
+  <div class="grid" id="g-latest"></div>
+</div></section>
+
+<section class="alt" id="populaere"><div class="wrap">
+  <h2>Mest sett</h2>
+  <p class="lead">Filmene flest har sett – maskintester og erfaringer.</p>
+  <div class="grid" id="g-popular"></div>
+</div></section>
+
+<section id="guider"><div class="wrap">
+  <h2>Guider og erfaringer</h2>
+  <p class="lead">For deg som skal i gang med ved, sagbruk eller traktor selv.</p>
+  <div class="grid" id="g-guides"></div>
+</div></section>
+
+<section class="alt" id="om"><div class="wrap about">
+  <div>
+    <h2>Om kanalen</h2>
+    <p>Jeg heter Eirik, og på tomta i Gudbrandsdalen produserer jeg bjørkeved, sager egne materialer på båndsagbruket og holder liv i en gammel Fiat-traktor. På kanalen viser jeg hvordan maskinene faktisk fungerer i hverdagen – også når noe ryker.</p>
+    <p>Målet er at du skal kunne lære noe, enten du vurderer å kjøpe vedmaskin, lurer på hvordan du får tørr ved, eller bare liker å se maskiner i arbeid.</p>
+    <div class="tags"><span>Vedproduksjon</span><span>Minigraver</span><span>Båndsagbruk</span><span>Traktor</span><span>Maskintester</span><span>Gudbrandsdalen</span></div>
+  </div>
+  <img src="https://i.ytimg.com/vi/jQK9XODivmw/maxresdefault.jpg" alt="Minigraver i arbeid på tomta" loading="lazy">
+</div></section>
+
+<section id="utstyr"><div class="wrap">
+  <h2>Utstyret jeg bruker</h2>
+  <p class="lead">Maskinene du ser i filmene.</p>
+  <div class="gear">
+    <div><h3>Vedmaskin</h3><p>Wee Teak XL Pro HW Ø48, med fliseavskiller</p></div>
+    <div><h3>Minigraver</h3><p>Lonking CDM 6020</p></div>
+    <div><h3>Båndsagbruk</h3><p>Frontier OS23 med 10 hk bensinmotor</p></div>
+    <div><h3>Traktor</h3><p>Fiat 450</p></div>
+    <div><h3>Flishugger</h3><p>Beaver LP Ø15 – til kvist og kanthogst</p></div>
+    <div><h3>Kløyving</h3><p>Espegard vedkløyver</p></div>
+  </div>
+</div></section>
+
+<section id="medlem"><div class="wrap">
+  <div class="member">
+    <div>
+      <h2>Bli kanalmedlem</h2>
+      <p>Vil du støtte kanalen? Som medlem på YouTube får du merke i kommentarfeltet – og alle medlemsinntektene går uavkortet til arbeidet på tomta.</p>
+    </div>
+    <a class="btn" href="https://www.youtube.com/@eirik_fb/join" target="_blank" rel="noopener">Bli medlem</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© <span id="yr"></span> Eirik Førlandsås-Bjørkli</span>
+  <span><a href="https://www.youtube.com/@eirik_fb" target="_blank" rel="noopener">YouTube @eirik_fb</a></span>
+</div></footer>
+
+<script src="data.js"></script>
+<script>
+const nf=new Intl.NumberFormat('no-NO');
+const df=new Intl.DateTimeFormat('no-NO',{day:'numeric',month:'long',year:'numeric'});
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function card(v,meta){return `<a class="vid" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+<div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""><span class="dur">${v.l}</span></div>
+<div class="t">${esc(v.t)}</div><div class="m">${meta}</div></a>`}
+const F=window.FILMER;
+document.getElementById('g-latest').innerHTML=F.latest.map(v=>card(v,df.format(new Date(v.d)))).join('');
+document.getElementById('g-popular').innerHTML=F.popular.map(v=>card(v,nf.format(v.v)+' visninger')).join('');
+document.getElementById('g-guides').innerHTML=F.guides.map(v=>card(v,'Guide')).join('');
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
